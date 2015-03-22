@@ -2,6 +2,7 @@
 package uk.org.okapibarcode;
 
 import uk.org.okapibarcode.gui.OkapiUI;
+import com.beust.jcommander.*;
 
 /**
  *
@@ -14,8 +15,13 @@ public class OkapiBarcode {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        OkapiUI okapiUi = new OkapiUI();
-        okapiUi.setVisible(true);
-    }
+        
+        Settings settings = new Settings();
+        new JCommander(settings, args);
 
+        if (settings.isSupressGui() == false) {
+            OkapiUI okapiUi = new OkapiUI();
+            okapiUi.setVisible(true);
+        }
+    }
 }
