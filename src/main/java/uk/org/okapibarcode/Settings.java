@@ -91,7 +91,7 @@ public class Settings {
     @Parameter(names = "--gs1", description = "Treat input as GS1 data", required = false)
     private boolean dataGs1Mode = false;
     
-    @Parameter(names = "--binary", description = "Trean input as binary data", required = false)
+    @Parameter(names = "--binary", description = "Treat input as binary data", required = false)
     private boolean dataBinaryMode = false;
     
     @Parameter(names = "--notext", description = "Remove human readable text", required = false)
