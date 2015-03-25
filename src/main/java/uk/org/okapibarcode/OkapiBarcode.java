@@ -208,16 +208,42 @@ public class OkapiBarcode {
     
     private static void makeBarcode(Settings settings, String inputData) {
         Barcode barcode = new Barcode();
-        String symbology = tBarcodeType[settings.getSymbolType()];
-
-        if (symbology.isEmpty()) {
-            System.out.println("No such symbology");
+        String symbology;
+        int type = settings.getSymbolType();
+        boolean letThrough = false;
+        
+        int[] openPorts = {
+            1, 2, 3, 4, 6, 7, 8, 9, 13, 18, 20, 21, 22, 23, 24, 25, 29, 30,
+            31, 32, 34, 37, 40, 47, 50, 51, 52, 53, 55, 56, 57, 58, 60, 63,
+            66, 67, 68, 70, 71, 76, 77, 79, 80, 81, 82, 84, 85, 86, 87, 89,
+            90, 92, 97, 98, 99, 102, 104, 106, 108, 112, 128, 129, 130, 131,
+            132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142
+        };
+        
+        for(int i = 0; i < openPorts.length; i++) {
+            if (type == openPorts[i]) {
+                /* Check which symbologies are allowed */
+                letThrough = true;
+            }
+        }
+        
+        if (letThrough == false) {
+            System.out.println("Invalid barcode type");
+            return;
+        }
+        
+        // FIXME: What happened to Code 23 support?
+        if (type == 129) {
+            System.out.println("Code 23 not supported, yet!");
             return;
         }
         
         //FIXME: Now set up all the other options.
         
+        symbology = tBarcodeType[type - 1];
         barcode.encode(symbology, inputData);
+        
+        System.out.println("Using barcode type " + type + " = " + symbology);
         
         //FIXME: Now do something with it!
     }

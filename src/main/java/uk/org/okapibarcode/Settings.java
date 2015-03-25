@@ -30,13 +30,13 @@ public class Settings {
     private boolean displayTypes = false;
     
     @Parameter(names = {"-i", "--input="}, description = "Read data from file", required = false)
-    private String inputFile = null;
+    private String inputFile = "";
     
     @Parameter(names = {"-o", "--output="}, description = "Write image to file", required = false)
-    private String outputFile = null;
+    private String outputFile = "";
     
     @Parameter(names = {"-d", "--data="}, description = "Barcode content", required = false)
-    private String inputData = null;
+    private String inputData = "";
     
     @Parameter(names = {"-b", "--barcode="}, description = "Select barcode type", required = false)
     private int symbolType = 20;
@@ -60,10 +60,10 @@ public class Settings {
     private boolean reverseColour = false;
     
     @Parameter(names = "--fg=", description = "Specify a foreground (ink) colour", required = false)
-    private String foregroundColour = null;
+    private String foregroundColour = "";
     
     @Parameter(names = "--bg=", description = "Specify a background (paper) colour", required = false)
-    private String backgroundColour = null;
+    private String backgroundColour = "";
     
     @Parameter(names = "--scale=", description = "Adjust size of output image", required = false)
     private int symbolScale = 0;
@@ -83,7 +83,7 @@ public class Settings {
     private int symbolECC = 0;
     
     @Parameter(names = "--primary=", description = "Add structured primary message", required = false)
-    private String primaryData = null;
+    private String primaryData = "";
     
     @Parameter(names = "--mode=", description = "Set encoding mode", required = false)
     private int encodeMode = 0;
